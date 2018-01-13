@@ -16,6 +16,22 @@
 <el-input v-model="Inputpaytype" placeholder="请输入交易类别" :Inputpaytype ="Inputpaytype"></el-input>
 <el-button type="text" @click="open">获取数据弹框</el-button>
     <img src="../assets/logo.png">
+    <el-table
+      :data="listres"
+      style="width: 100%">
+      <el-table-column
+        prop="业务名"
+        label="业务名">
+      </el-table-column>
+      <el-table-column
+        prop="交易状态"
+        label="交易状态">
+      </el-table-column>
+      <el-table-column
+        prop="金额"
+        label="金额">
+      </el-table-column>
+    </el-table>
   </div>
 </template>
 
@@ -37,7 +53,8 @@ export default {
       banner: "Banner",
       topmenu: "Top_menu",
       Inputid: "",
-      Inputpaytype: ""
+      Inputpaytype: "",
+      listres:""
     };
   },
   components: {
@@ -83,6 +100,7 @@ export default {
       data.id = this.Inputid;
       _this.myajax(data).then(
         res => {
+          _this.listres = res.列表;
           _this.$alert(res, "获取的信息", {
             confirmButtonText: "确定",
             callback: action => {
