@@ -6,7 +6,8 @@ import router from './router'
 import Req from './utils/request'
 import store from './vuex/store'
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
+Vue.config.devtools = true;
 Vue.prototype.$http = Req;
 
 /* eslint-disable no-new */

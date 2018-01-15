@@ -62,7 +62,7 @@
       layout="total, sizes, prev, pager, next, jumper"
       :total="total_row">
     </el-pagination>
-    <handleedit msgfromfather="row" keep-alive></handleedit>
+    <handleedit></handleedit>
   </div>
   
 </template>
@@ -172,6 +172,7 @@ export default {
       _this.open();
     },
     handleEdit(index, row) {
+      console.log(this.$refs);
       console.log(index, row);
       this.$store.commit('SET_MSG',row,true);
       this.rowlist = row;

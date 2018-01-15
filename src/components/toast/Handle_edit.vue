@@ -1,28 +1,29 @@
 <template>
 <div class="Handleedit">
-  {{ $store.state.row }}
+  <div>{{dialogFormVisible}}</div>
+<div>{{ $store.state.row}}</div>
 <el-dialog title="编辑窗口" :visible.sync="$store.state.opentoast">
   <el-form :model="form">
     <el-form-item label="id" :label-width="formLabelWidth">
-      <el-input v-model="form.id" v-bind:value="$store.state.row.id"  clearable></el-input>
+      <el-input v-model="form.id" clearable></el-input>
     </el-form-item>
     <el-form-item label="交易类别" :label-width="formLabelWidth">
-      <el-input v-model="form.paytype" v-bind:value="$store.state.row.id" auto-complete="off" clearable></el-input>
+      <el-input v-model="form.paytype" auto-complete="off" clearable></el-input>
     </el-form-item>
     <el-form-item label="积分" :label-width="formLabelWidth">
-      <el-input v-model="form.jifen" v-bind:value="$store.state.row.id" auto-complete="off" clearable></el-input>
+      <el-input v-model="form.jifen" auto-complete="off" clearable></el-input>
     </el-form-item>
     <el-form-item label="交易账户" :label-width="formLabelWidth">
-      <el-input v-model="form.payuser" v-bind:value="form.payuser" auto-complete="off" clearable></el-input>
+      <el-input v-model="form.payuser" auto-complete="off" clearable></el-input>
     </el-form-item>
     <el-form-item label="余额" :label-width="formLabelWidth">
-      <el-input v-model="form.lessmoney" v-bind:value="form.lessmoney" auto-complete="off" clearable></el-input>
+      <el-input v-model="form.lessmoney" auto-complete="off" clearable></el-input>
     </el-form-item>
     <el-form-item label="录入时间" :label-width="formLabelWidth">
-      <el-input v-model="form.time"  v-bind:value="form.time" auto-complete="off" clearable></el-input>
+      <el-input v-model="form.time" auto-complete="off" clearable></el-input>
     </el-form-item>
     <el-form-item label="说明" :label-width="formLabelWidth">
-      <el-input v-model="form.readme"  v-bind:value="form.readme"  auto-complete="off" clearable></el-input>
+      <el-input v-model="form.readme"  auto-complete="off" clearable></el-input>
     </el-form-item>
   </el-form>
   <div slot="footer" class="dialog-footer">
@@ -57,11 +58,6 @@ export default {
   },
   computed: mapGetters({
     msg: "GET_MSG"
-  }),
-  watch: {
-    value(val, oldValue) {
-      console.log(val);
-    }
-  }
+  })
 };
 </script>
