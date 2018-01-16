@@ -1,8 +1,6 @@
 <template>
 <div class="Handleedit">
-  <div>{{dialogFormVisible}}</div>
-<div>{{ $store.state.row}}</div>
-<el-dialog title="编辑窗口" :visible.sync="$store.state.opentoast">
+<el-dialog title="编辑窗口" :visible.sync="dialogFormVisible">
   <el-form :model="form">
     <el-form-item label="id" :label-width="formLabelWidth">
       <el-input v-model="form.id" clearable></el-input>
@@ -27,8 +25,8 @@
     </el-form-item>
   </el-form>
   <div slot="footer" class="dialog-footer">
-    <el-button @click="$store.state.opentoast = false">取 消</el-button>
-    <el-button type="primary" @click="$store.state.opentoast = false">确 定</el-button>
+    <el-button @click="dialogFormVisible = false">取 消</el-button>
+    <el-button type="primary" @click="dialogFormVisible = false">确 定</el-button>
   </div>
 </el-dialog>
 </div>
@@ -42,22 +40,34 @@ export default {
   name: "Handleedit",
   data() {
     return {
-      dialogTableVisible: this.$store.state.opentoast,
-      dialogFormVisible: true,
+      dialogTableVisible: false,
+      dialogFormVisible: false,
       form: {
-        id: this.$store.state.row.id,
-        paytype: this.$store.state.row.交易类别,
-        jifen: this.$store.state.row.积分,
-        payuser: this.$store.state.row.交易账户,
-        lessmoney: this.$store.state.row.余额,
-        time: this.$store.state.row.录入时间,
-        readme: this.$store.state.row.说明
+        id: "",
+        paytype: "",
+        jifen: "",
+        payuser: "",
+        lessmoney: "",
+        time: "",
+        readme: ""
       },
       formLabelWidth: "120px"
     };
   },
   computed: mapGetters({
     msg: "GET_MSG"
-  })
+  }),
+  methods:{
+    openit(){
+      this.dialogFormVisible = true;
+      this.form.id = this.$store.state.row.id;
+      this.form.paytype = this.$store.state.row.交易类别;
+      this.form.jifen = this.$store.state.row.积分;
+      this.form.payuser = this.$store.state.row.交易账户;
+      this.form.lessmoney = this.$store.state.row.余额;
+      this.form.time = this.$store.state.row.录入时间;
+      this.form.readme = this.$store.state.row.说明;
+    }
+  }
 };
 </script>

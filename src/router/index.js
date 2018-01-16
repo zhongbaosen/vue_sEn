@@ -5,10 +5,10 @@ import 'element-ui/lib/theme-chalk/index.css'
 import Router from 'vue-router'
 import Head_Bar from '@/components/Head_Bar'
 import HelloWorld from '@/components/HelloWorld'
-import Test_api from '@/components/Test_api'
+import _Index from '@/components/Index'
 
 Vue.use(Router)
-Vue.use(ElementUI, { size: 'small' })
+Vue.use(ElementUI)
 
 export default new Router({
   routes: [
@@ -24,8 +24,8 @@ export default new Router({
     },
     {
       path: '/',
-      name: 'Test_api',
-      component: Test_api
+      name: 'Index',
+      component: _Index
     }
   ]
 })

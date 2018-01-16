@@ -1,5 +1,5 @@
 <template>
-  <div class="Test_api">
+  <div class="Testapi">
       <img class="logo" src="../assets/logo.png">
       <br>
 <label for="">账号</label>
@@ -12,7 +12,8 @@
     <el-table
       :data="listres"
       align="center"
-      style="width: 100%">
+      class="ntable"
+      style="width: 100%;height:40rem;">
       <el-table-column
         prop="id"
         label="id">
@@ -62,10 +63,47 @@
       layout="total, sizes, prev, pager, next, jumper"
       :total="total_row">
     </el-pagination>
-    <handleedit></handleedit>
+    <handleedit ref="handle"></handleedit>
   </div>
   
 </template>
+
+<style>
+.Testapi {
+
+}
+.el-table__body-wrapper{
+  overflow-y: scroll;
+  height: 37.6rem;
+}
+::-webkit-scrollbar-track-piece{
+background-color:#fff;/*滚动条的背景颜色*/
+-webkit-border-radius:0;/*滚动条的圆角宽度*/
+}
+::-webkit-scrollbar{
+width:8px;/*滚动条的宽度*/
+height:8px;/*滚动条的高度*/
+}
+::-webkit-scrollbar-thumb:vertical{/*垂直滚动条的样式*/
+height:50px;
+background-color:#999;
+-webkit-border-radius:4px;
+outline:2px solid #fff;
+outline-offset:-2px;
+border:2px solid #fff;
+}
+::-webkit-scrollbar-thumb:hover{/*滚动条的hover样式*/
+height:50px;
+background-color:#9f9f9f;
+-webkit-border-radius:4px;
+}
+::-webkit-scrollbar-thumb:horizontal{/*水平滚动条的样式*/
+width:5px;
+background-color:#CCCCCC;
+-webkit-border-radius:6px;
+}
+</style>
+
 
 <script>
 import Handleedit from "./toast/Handle_edit";
@@ -81,8 +119,8 @@ export default {
       total_row: 0, //当前总条数
       btn_text: "获取账号记录",
       listres: [],
-      dialogFormVisible: false,
-      rowlist:[]
+      dialogFormVisible: true,
+      rowlist: []
     };
   },
   components: {
@@ -119,6 +157,7 @@ export default {
       data.随机码 = this.Inputrandom;
       data.每页条数 = this.count;
       data.页数 = this.currentpage;
+      console.log("123" + this.total_row);
       _this.myajax(data).then(
         res => {
           if (res.状态 == "成功") {
@@ -127,7 +166,20 @@ export default {
             this.total_row = this.listres.length;
             this.is_btnload = false;
             this.btn_text = "获取账号记录";
+            this.$message({
+              showClose: true,
+              message: "获取信息:"+res.状态,
+              type: "success"
+            });
             console.log(JSON.stringify(_this.listres));
+          } else {
+            this.$message({
+              showClose: true,
+              message: "失败原因:"+res.状态,
+              type: "error"
+            });
+            this.is_btnload = false;
+            this.btn_text = "获取账号记录";
           }
 
           //   _this.$alert(res, "获取的信息", {
@@ -172,14 +224,12 @@ export default {
       _this.open();
     },
     handleEdit(index, row) {
-      console.log(this.$refs);
-      console.log(index, row);
-      this.$store.commit('SET_MSG',row,true);
+      this.$store.commit("SET_MSG", row, true);
       this.rowlist = row;
+      this.$refs.handle.openit(); //调用子组件的函数
     },
     handleDelete(index, row) {
-      console.log(index, row);
-      this.$store.commit('SET_MSG',row,true);
+      this.$store.commit("SET_MSG", row, true);
       this.rowlist = row;
     }
   }
