@@ -6,11 +6,13 @@ import Router from 'vue-router'
 import Head_Bar from '@/components/Head_Bar'
 import HelloWorld from '@/components/HelloWorld'
 import _Index from '@/components/Index'
+import Chart from '@/components/Chart'
 
 Vue.use(Router)
 Vue.use(ElementUI)
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/t',
@@ -26,6 +28,11 @@ export default new Router({
       path: '/',
       name: 'Index',
       component: _Index
+    },
+    {
+      path: '/chart',
+      name: 'Chart',
+      component: Chart
     }
   ]
 })

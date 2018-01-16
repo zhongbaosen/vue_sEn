@@ -10,10 +10,12 @@
     <el-container>
       <el-aside class="aside">
          <Leftnav></Leftnav>
-        </el-aside> 
+        </el-aside>
+        <keep-alive>
         <el-main>
           <Content></Content>
         </el-main> 
+        </keep-alive>
     </el-container>
 
       <el-container>
