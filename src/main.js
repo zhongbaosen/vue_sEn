@@ -9,6 +9,17 @@ import store from './vuex/store'
 Vue.config.productionTip = false;
 Vue.config.debug = true;
 Vue.prototype.$http = Req;
+var msg = "";
+
+router.beforeEach((to, from, next) => {
+  //window.document.title = "管理平台" + "(" + to.meta.title + ") - Make by sEn";
+  msg = "管理平台" + "(" + to.meta.title + ") - Make by sEn";
+  window.document.title = msg;
+  // setInterval(function(){
+  //   titAn()
+  // },1000);//设置时间间隔运行 
+  next()
+})
 
 /* eslint-disable no-new */
 new Vue({
@@ -18,3 +29,8 @@ new Vue({
   template: '<App/>',
   render: h => h(App)
 })
+
+function titAn() {
+  msg = msg.substring(1,msg.length)+ msg.substring(0,1);
+  window.document.title = msg;
+}

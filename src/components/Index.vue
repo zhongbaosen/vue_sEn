@@ -13,7 +13,7 @@
         </el-aside>
         <keep-alive>
         <el-main>
-          <Content></Content>
+          <router-view/>
         </el-main> 
         </keep-alive>
     </el-container>
@@ -27,14 +27,14 @@
 </template>
 
 <style scoped>
-.header{
-     background: rgb(84, 92, 100);
+.header {
+  background: rgb(84, 92, 100);
 }
-.aside{
+.aside {
   width: 200px;
 }
-.footer{
-     background: rgb(84, 92, 100);
+.footer {
+  background: rgb(84, 92, 100);
 }
 </style>
 
