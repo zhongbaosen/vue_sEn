@@ -24,6 +24,13 @@ module.exports = {
         pathRewrite: {
           '^/get_list': ''
         }
+      },
+      "/get_state":{
+        target: 'http://121.201.67.222:19990/ajax.post?func=get_state',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/get_state': ''
+        }
       }
     },
 
