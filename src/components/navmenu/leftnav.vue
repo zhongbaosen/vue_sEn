@@ -1,9 +1,19 @@
 <template>
+<el-container class="leftnav-bg">
+  <el-header>
+    <el-radio-group v-model="isCollapse" style="margin-bottom: 20px;">
+  <el-radio-button :label="false">展开</el-radio-button>
+  <el-radio-button :label="true">收起</el-radio-button>
+</el-radio-group>
+  </el-header>
+<el-main>
 <el-menu
-      default-active="2"
+      :default-active="navselected"
+      :default-openeds="navopen"
       class="el-menu-vertical-demo"
       @open="handleOpen"
       @close="handleClose"
+      @select="handleSelect"
       background-color="#545c64"
       text-color="#fff"
       active-text-color="#ffd04b"
@@ -35,10 +45,18 @@
         <span slot="title">导航三</span>
       </el-menu-item>
     </el-menu>
+  </el-main>
+  </el-container>
 </template>
 
 <style>
+.leftnav-bg{
+  background-color: rgb(84, 92, 100);
+}
 .el-menu-vertical-demo {
+}
+.el-menu{
+  border:none;
 }
 .el-menu-vertical-demo:not(.el-menu--collapse) {
   min-height: 2000px;
@@ -49,16 +67,25 @@
 
 <script>
 export default {
-  data(){
+  data() {
     return {
-      clientHeight: 0
-    }
+      clientHeight: 0,
+      isCollapse:true,
+      navselected:"1",
+      navopen:["1","2","3"]
+    };
   },
   methods: {
     handleOpen(key, keyPath) {
+      console.log("我是打开菜单的方法");
       console.log(key, keyPath);
     },
     handleClose(key, keyPath) {
+      console.log("我是关闭菜单的方法");
+      console.log(key, keyPath);
+    },
+    handleSelect(key, keyPath) {
+      console.log("我是选中菜单的方法");
       console.log(key, keyPath);
     },
     linkTo(url) {

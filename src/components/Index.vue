@@ -13,7 +13,10 @@
         </el-aside>
         <keep-alive>
         <el-main>
+          <!-- 使用动态的 transition name -->
+          <transition :name="transitionName">
           <router-view/>
+          </transition>
         </el-main> 
         </keep-alive>
     </el-container>
@@ -46,13 +49,22 @@ import Headnav from "./navmenu/headnav";
 import Footer from "./navmenu/footer";
 export default {
   data() {
-    return {};
+    return {
+      transitionName: 'slide-left'
+    };
   },
   components: {
     Content,
     Leftnav,
     Headnav,
     Footer
+  }, // watch $route 决定使用哪种过渡
+  watch: {
+    $route(to, from) {
+      const toDepth = to.path.split("/").length;
+      const fromDepth = from.path.split("/").length;
+      this.transitionName = toDepth < fromDepth ? "slide-right" : "slide-left";
+    }
   }
 };
 </script>

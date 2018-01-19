@@ -1,4 +1,11 @@
 <template>
+<el-container>
+  <el-header>
+<el-menu class="el-menu-demo" mode="horizontal"  default-active="1">
+  <el-menu-item index="1">表格模拟</el-menu-item>
+</el-menu>
+</el-header>
+<el-main>
   <div class="Testapi">
       <img class="logo" src="../assets/logo.png">
       <br>
@@ -65,7 +72,8 @@
     </el-pagination>
     <handleedit ref="handle"></handleedit>
   </div>
-  
+</el-main>
+</el-container>  
 </template>
 
 <style>
@@ -157,13 +165,12 @@ export default {
       data.随机码 = this.Inputrandom;
       data.每页条数 = this.count;
       data.页数 = this.currentpage;
-      console.log("123" + this.total_row);
       _this.myajax(data).then(
         res => {
           if (res.状态 == "成功") {
             res.账号 = "";
             _this.listres = res.积分列表;
-            this.total_row = this.listres.length;
+            this.total_row = Number(res.总条数);
             this.is_btnload = false;
             this.btn_text = "获取账号记录";
             this.$message({
@@ -171,7 +178,7 @@ export default {
               message: "获取信息:"+res.状态,
               type: "success"
             });
-            console.log(JSON.stringify(_this.listres));
+            //console.log(JSON.stringify(_this.listres));
           } else {
             this.$message({
               showClose: true,
