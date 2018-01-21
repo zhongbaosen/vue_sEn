@@ -116,6 +116,11 @@ export default {
         console.log(to,from);
         this.pathstatus = to.path;
       }
+  },
+  mounted(){
+     var _this = this;
+     console.log(this.$route);  //页面刷新后会自动加载此方法
+     
   }
 };
 </script>
