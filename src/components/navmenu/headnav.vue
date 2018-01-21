@@ -27,7 +27,7 @@
 .bg-purple-dark img {
   position: relative;
   width: 3.2rem;
-  right: 70rem;
+  right: 56rem;
 }
 .el-dropdown-link {
   cursor: pointer;

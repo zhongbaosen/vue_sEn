@@ -7,6 +7,9 @@
 </el-header>
 <el-main>
   <el-row>
+   <Carousel></Carousel>
+    </el-row>
+  <el-row :gutter="20">
   <el-col :span="6">
     <transition name="el-fade-in">
       <el-card class="box-card">
@@ -46,9 +49,8 @@
 .item {
   padding: 18px 0;
 }
-
-.box-card {
-  width: 480px;
+.__vev_calendar-wrapper .events-wrapper .event-item .time{
+  position:unset;
 }
 
 .userimg {
@@ -69,6 +71,7 @@
 import countTo from 'vue-count-to';  //数字增减动画
 import EventCalendar from "./calendar/eventcalendar";  //日历插件
 import Elcalendar from "./calendar/el_calendar";
+import Carousel from "./banner/Carousel";
 export default {
   data() {
     return {
@@ -116,7 +119,8 @@ export default {
   components: {
     "Calendar": EventCalendar,
     "countTo":countTo,
-    "Elcalendar":Elcalendar
+    "Elcalendar":Elcalendar,
+    "Carousel":Carousel
   }
 };
 </script>

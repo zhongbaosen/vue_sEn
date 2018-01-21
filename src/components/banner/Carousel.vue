@@ -1,7 +1,7 @@
 <template>
-  <el-carousel :interval="4000" type="card" height="300px" width="1.2rem">
+  <el-carousel :interval="4000" type="card" height="300px" width="1.2rem"  @change="change">
     <el-carousel-item v-for="item in 6" :key="item">
-      <img src="../../assets/images/banner_one.jpg" alt="">
+      <img src="../../assets/images/banner/1.jpg" alt="">
     </el-carousel-item>
   </el-carousel>
 </template>
@@ -23,3 +23,13 @@
     background-color: #d3dce6;
   }
 </style>
+
+<script>
+export default {
+  methods: {
+    change(index) {
+      console.log(index);
+    }
+  }
+}
+</script>

@@ -71,8 +71,9 @@ export default {
     return {
       clientHeight: 0,
       isCollapse:true,
-      navselected:"1",
-      navopen:["1","2","3"]
+      navselected:"",
+      pathstatus:"",
+      navopen:[]
     };
   },
   methods: {
@@ -87,10 +88,28 @@ export default {
     handleSelect(key, keyPath) {
       console.log("我是选中菜单的方法");
       console.log(key, keyPath);
+      this.navselected = key;
     },
-    linkTo(url) {
+    linkTo(url,index) {
+      console.log("点击的序列为:"+this.navselected);
       this.$router.push({ path: url });
     }
+  },
+  watch:{
+      isCollapse: function(val) { //此处不要使用箭头函数
+           if(val){
+             this.navopen = [];
+           }else{
+             this.navopen = ["1","2","3"];
+           }
+      },
+      pathstatus:function(data){
+        console.log(data);
+      },
+      $route (to,from){
+        console.log(to,from);
+        this.pathstatus = to.path;
+      }
   }
 };
 </script>

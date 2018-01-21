@@ -11,14 +11,14 @@
       <el-aside class="aside">
          <Leftnav></Leftnav>
         </el-aside>
-        <keep-alive>
-        <el-main>
-          <!-- 使用动态的 transition name -->
+        <!-- 使用动态的 transition name -->
           <transition :name="transitionName">
-          <router-view/>
-          </transition>
+        <keep-alive>
+        <el-main>       
+          <router-view/>     
         </el-main> 
         </keep-alive>
+        </transition>
     </el-container>
 
       <el-container>
