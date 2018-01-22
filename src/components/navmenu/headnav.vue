@@ -23,11 +23,11 @@
   background: rgb(84, 92, 100);
   width: 100%;
   padding: 10px 0 10px 0;
+  float: left;
 }
 .bg-purple-dark img {
-  position: relative;
+  float: left;
   width: 3.2rem;
-  right: 56rem;
 }
 .el-dropdown-link {
   cursor: pointer;

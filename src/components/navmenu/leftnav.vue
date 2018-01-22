@@ -40,9 +40,9 @@
           <el-menu-item index="2-4-1">资料修改</el-menu-item>
         </el-submenu>
       </el-submenu>
-      <el-menu-item index="3">
+      <el-menu-item index="3" @click="linkTo('/draw')">
         <i class="el-icon-setting"></i>
-        <span slot="title">导航三</span>
+        <span slot="title">画板</span>
       </el-menu-item>
     </el-menu>
   </el-main>
@@ -115,11 +115,13 @@ export default {
       $route (to,from){
         console.log(to,from);
         this.pathstatus = to.path;
+        this.navselected = to.meta.index;
       }
   },
   mounted(){
      var _this = this;
-     console.log(this.$route);  //页面刷新后会自动加载此方法
+     console.log("当前的路径为:",this.$route);  //页面刷新后会自动加载此方法
+     this.navselected = this.$route.meta.index;
      
   }
 };

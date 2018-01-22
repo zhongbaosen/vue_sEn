@@ -47,8 +47,8 @@ module.exports = {
      * Source Maps
      */
 
-    // https://webpack.js.org/configuration/devtool/#development
-    devtool: 'cheap-module-eval-source-map',
+    // https://webpack.js.org/configuration/devtool/#development     
+    devtool: '#eval-source-map',   //原先是cheap-module-eval-source-map
 
     // If you have problems debugging vue-files in devtools,
     // set this to false - it *may* help

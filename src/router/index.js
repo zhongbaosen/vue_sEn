@@ -10,6 +10,7 @@ import HelloWorld from '@/components/Welcome'
 import _Index from '@/components/Test_api'
 import Chart from '@/components/Chart'
 import Myinfo from '@/components/My_info'
+import Draw from '@/components/Draw'
 
 Vue.use(Router)
 Vue.use(ElementUI)
@@ -28,15 +29,8 @@ export default new Router({
       name: 'HelloWorld',
       component: HelloWorld,
       meta: {
-        title: '首页'
-      }
-    },
-    {
-      path: '/get_record',
-      name: 'Index',
-      component: _Index,
-      meta: {
-        title: '账号记录'
+        title: '首页',
+        index:"1"
       }
     },
     {
@@ -44,7 +38,17 @@ export default new Router({
       name: 'Chart',
       component: Chart,
       meta: {
-        title: '图表'
+        title: '图表',
+        index:"2-1"
+      }
+    },
+    {
+      path: '/get_record',
+      name: 'Index',
+      component: _Index,
+      meta: {
+        title: '账号记录',
+        index:"2-2"
       }
     },
     {
@@ -52,7 +56,17 @@ export default new Router({
       name: 'Myinfo',
       component: Myinfo,
       meta: {
-        title: '我的资料'
+        title: '我的资料',
+        index:"2-3"
+      }
+    },
+    {
+      path: '/draw',
+      name: 'Draw',
+      component: Draw,
+      meta: {
+        title: '画板',
+        index:"3"
       }
     }, 
     {
