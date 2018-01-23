@@ -40,10 +40,27 @@
           <el-menu-item index="2-4-1">资料修改</el-menu-item>
         </el-submenu>
       </el-submenu>
-      <el-menu-item index="3" @click="linkTo('/draw')">
+       <el-submenu index="3">
+        <template slot="title">
+          <i class="el-icon-location"></i>
+          <span>展示功能</span>
+        </template>
+        <el-menu-item-group>
+          <template slot="title">编辑列表</template>
+          <el-menu-item index="3-1" @click="linkTo('/draw')">
         <i class="el-icon-setting"></i>
         <span slot="title">画板</span>
       </el-menu-item>
+          <el-menu-item index="3-2" @click="linkTo('/')">
+          <i class="el-icon-document"></i>
+          <span slot="title">显示列表</span>
+          </el-menu-item>
+          <el-menu-item index="3-3" @click="linkTo('/show')">
+          <i class="el-icon-edit"></i>
+          <span slot="title">富文本</span>
+          </el-menu-item>
+        </el-menu-item-group>
+      </el-submenu>
     </el-menu>
   </el-main>
   </el-container>
@@ -106,7 +123,7 @@ export default {
            if(val){
              this.navopen = [];
            }else{
-             this.navopen = ["1","2","3"];
+             this.navopen = ["1","2","3","4"];
            }
       },
       pathstatus:function(data){

@@ -1,38 +1,17 @@
 <template>
+<el-container>
+    <el-header>
+<el-menu class="el-menu-demo" mode="horizontal"  default-active="1">
+  <el-menu-item index="1">富文本</el-menu-item>
+</el-menu>
+</el-header>
+<el-main>
   <div class="Head_Bar">
-     <topmenu :is="topmenu" keep-alive></topmenu>   
-    <banner :is="banner" keep-alive></banner>
-    <div class="tabs">
- <div class="tab" @click="toggleTab('One_page')"><a>{{ fristmsg }}</a></div>
- <div class="tab" @click="toggleTab('Two_page')"><a>{{secondmsg}}</a></div>
- <div class="tab" @click="toggleTab('Three_page')"><a>{{thridmsg}}</a></div>
-    </div>
-    <div>
-<prince :is="currentTab" keep-alive></prince>
+     <Uediter :value="ueditor.value" :config="ueditor.config" ref="ue"></Uediter>
+     <input type="button" value="显示编辑器内容（从控制台查看）" @click="returnContent">
 </div>
-<label for="">id</label>
-<el-input v-model="Inputid" placeholder="请输入id" :Inputid ="Inputid"></el-input>
-<label for="">交易类别</label>
-<el-input v-model="Inputpaytype" placeholder="请输入交易类别" :Inputpaytype ="Inputpaytype"></el-input>
-<el-button type="text" @click="open">获取数据弹框</el-button>
-    <img src="../assets/logo.png">
-    <el-table
-      :data="listres"
-      style="width: 100%">
-      <el-table-column
-        prop="业务名"
-        label="业务名">
-      </el-table-column>
-      <el-table-column
-        prop="交易状态"
-        label="交易状态">
-      </el-table-column>
-      <el-table-column
-        prop="金额"
-        label="金额">
-      </el-table-column>
-    </el-table>
-  </div>
+</el-main>
+</el-container>
 </template>
 
 <script>
@@ -41,6 +20,7 @@ import One_page from "./list/One_page";
 import Two_page from "./list/Two_page";
 import Three_page from "./list/Three_page";
 import Banner from "./banner/Carousel";
+import Uediter from "@/components/editor/ue.vue";
 export default {
   name: "Head_Bar",
   data() {
@@ -54,15 +34,18 @@ export default {
       topmenu: "Top_menu",
       Inputid: "",
       Inputpaytype: "",
-      listres:""
+      listres: "",
+      dat: {
+        content: ""
+      },
+      ueditor: {
+        value: "编辑器默认文字",
+        config: {}
+      }
     };
   },
   components: {
-    One_page,
-    Two_page,
-    Three_page,
-    Banner,
-    Top_menu
+    Uediter
   },
   methods: {
     myajax: function(data) {
@@ -125,6 +108,10 @@ export default {
           });
         }
       );
+    },
+    returnContent() {
+      this.dat.content = this.$refs.ue.getUEContent();
+      console.log(this.dat.content);
     }
   }
 };

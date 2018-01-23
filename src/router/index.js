@@ -20,11 +20,6 @@ export default new Router({
   mode: 'hash',
   routes: [
     {
-      path: '/t',
-      name: 'Head_Bar',
-      component: Head_Bar
-    },
-    {
       path: '/',
       name: 'HelloWorld',
       component: HelloWorld,
@@ -66,7 +61,25 @@ export default new Router({
       component: Draw,
       meta: {
         title: '画板',
-        index:"3"
+        index:"3-1"
+      }
+    },
+    {
+      path: '/t',
+      name: 't',
+      component: Head_Bar,
+      meta: {
+        title: '显示列表',
+        index:"3-2"
+      }
+    },
+    {
+      path: '/show',
+      name: 'show',
+      component: Head_Bar,
+      meta: {
+        title: '富文本',
+        index:"3-3"
       }
     }, 
     {
