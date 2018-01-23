@@ -6,12 +6,7 @@
 </el-menu>
 </el-header>
 <el-main>
-    <el-row>
    <Drawbg />
-   </el-row>
-       <el-row>
-           <Countdown />
-        </el-row>   
 </el-main>
 </el-container>  
 </template>

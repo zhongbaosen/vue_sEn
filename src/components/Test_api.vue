@@ -17,10 +17,16 @@
 <el-button type="primary" @click="open" :loading="is_btnload">{{btn_text}}</el-button>
 </div>
     <el-table
+      ref="multipleTable"
       :data="listres"
       align="center"
       class="ntable"
-      style="width: 100%;height:40rem;">
+      style="width: 100%;height:40rem;"
+      @selection-change="handleSelectionChange">
+      <el-table-column
+      type="selection"
+      width="55">
+    </el-table-column>
       <el-table-column
         prop="id"
         label="id">
@@ -238,8 +244,21 @@ export default {
     handleDelete(index, row) {
       this.$store.commit("SET_MSG", row, true);
       this.rowlist = row;
+    },
+    toggleSelection(rows) {
+        if (rows) {
+          rows.forEach(row => {
+            this.$refs.multipleTable.toggleRowSelection(row);
+          });
+        } else {
+          this.$refs.multipleTable.clearSelection();
+        }
+      },
+      handleSelectionChange(val) {    //获取勾选后每行的信息
+        this.multipleSelection = val;
+        console.log(val);
+      }
     }
-  }
 };
 </script>
 

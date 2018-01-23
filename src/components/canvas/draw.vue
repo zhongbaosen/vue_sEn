@@ -221,7 +221,7 @@
         }],
         context: {},
         imgUrl: [],
-        canvasMoveUse: true,
+        canvasMoveUse: false,
         // 存储当前表面状态数组-上一步
         preDrawAry: [],
         // 存储当前表面状态数组-下一步
@@ -244,12 +244,12 @@
       this.context = canvas.getContext('2d')
       this.initDraw()
       this.setCanvasStyle()
-    //   document.querySelector('#footer').classList.add('hide-footer')
-    //   document.querySelector('body').classList.add('fix-body')
+      //document.querySelector('#footer').classList.add('hide-footer')
+      //document.querySelector('body').classList.add('fix-body')
     },
     destroyed () {
-    //   document.querySelector('#footer').classList.remove('hide-footer')
-    //   document.querySelector('body').classList.remove('fix-body')
+      //document.querySelector('#footer').classList.remove('hide-footer')
+      //document.querySelector('body').classList.remove('fix-body')
     },
     computed: {
       controls () {
