@@ -11,6 +11,7 @@ import _Index from '@/components/Test_api'
 import Chart from '@/components/Chart'
 import Myinfo from '@/components/My_info'
 import Draw from '@/components/Draw'
+import Login from '@/components/Login'
 
 Vue.use(Router)
 Vue.use(ElementUI)
@@ -19,6 +20,15 @@ Vue.use(vueEventCalendar, {locale: 'zh'}) //可以设置语言，支持中文和
 export default new Router({
   mode: 'hash',
   routes: [
+    {
+      path: '/login',
+      name: 'login',
+      component: Login,
+      meta: {
+        title: '登录',
+        index:"0"
+      }
+    },
     {
       path: '/',
       name: 'HelloWorld',

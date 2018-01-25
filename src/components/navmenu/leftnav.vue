@@ -36,8 +36,9 @@
           <el-menu-item index="2-3"  @click="linkTo('/myinfo')">我的资料</el-menu-item>
         </el-menu-item-group>
         <el-submenu index="2-4">
-          <template slot="title">我的设置</template>
-          <el-menu-item index="2-4-1">资料修改</el-menu-item>
+          <template slot="title">账号管理</template>
+          <el-menu-item index="2-4-1">添加账号</el-menu-item>
+          <el-menu-item index="2-4-2">资料修改</el-menu-item>
         </el-submenu>
       </el-submenu>
        <el-submenu index="3">
