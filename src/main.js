@@ -5,6 +5,7 @@ import App from './App'
 import router from './router'
 import Req from './utils/request'
 import store from './vuex/store'
+import $ from 'jquery'
 import '../static/ueditor/ueditor.config.js'
 import '../static/ueditor/ueditor.all.js'
 import '../static/ueditor/lang/zh-cn/zh-cn.js'
@@ -16,8 +17,14 @@ Vue.prototype.$http = Req;
 var msg = "";
 
 router.beforeEach((to, from, next) => {
+  console.log(to);
+  if(!to.name){
+    msg = "非法访问";
+  }else{
+    msg = "管理平台" + "(" + to.meta.title + ") - Make by sEn";
+  }
   //window.document.title = "管理平台" + "(" + to.meta.title + ") - Make by sEn";
-  msg = "管理平台" + "(" + to.meta.title + ") - Make by sEn";
+  
   window.document.title = msg;
   // setInterval(function(){
   //   titAn()

@@ -15,7 +15,7 @@
           <transition :name="transitionName">
         <keep-alive>
         <el-main>       
-          <router-view/>     
+          <router-view/> 
         </el-main> 
         </keep-alive>
         </transition>

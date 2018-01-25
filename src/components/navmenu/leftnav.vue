@@ -18,7 +18,7 @@
       text-color="#fff"
       active-text-color="#ffd04b"
       ref="leftnav">
-      <el-menu-item index="1"  @click="linkTo('/')">
+      <el-menu-item index="1"  @click="linkTo('/index/page')">
         <i class="el-icon-menu"></i>
         <span slot="title">首页</span>
       </el-menu-item>
@@ -29,11 +29,11 @@
         </template>
         <el-menu-item-group>
           <template slot="title">系统概况</template>
-          <el-menu-item index="2-1" @click="linkTo('/chart')">图表</el-menu-item>
-          <el-menu-item index="2-2" @click="linkTo('/get_record')">账户记录</el-menu-item>
+          <el-menu-item index="2-1" @click="linkTo('/index/chart')">图表</el-menu-item>
+          <el-menu-item index="2-2" @click="linkTo('/index/get_record')">账户记录</el-menu-item>
         </el-menu-item-group>
         <el-menu-item-group title="我的">
-          <el-menu-item index="2-3"  @click="linkTo('/myinfo')">我的资料</el-menu-item>
+          <el-menu-item index="2-3"  @click="linkTo('/index/myinfo')">我的资料</el-menu-item>
         </el-menu-item-group>
         <el-submenu index="2-4">
           <template slot="title">账号管理</template>
@@ -48,15 +48,15 @@
         </template>
         <el-menu-item-group>
           <template slot="title">编辑列表</template>
-          <el-menu-item index="3-1" @click="linkTo('/draw')">
+          <el-menu-item index="3-1" @click="linkTo('/index/draw')">
         <i class="el-icon-setting"></i>
         <span slot="title">画板</span>
       </el-menu-item>
-          <el-menu-item index="3-2" @click="linkTo('/')">
+          <el-menu-item index="3-2" @click="linkTo('/index/t')">
           <i class="el-icon-document"></i>
           <span slot="title">显示列表</span>
           </el-menu-item>
-          <el-menu-item index="3-3" @click="linkTo('/show')">
+          <el-menu-item index="3-3" @click="linkTo('/index/show')">
           <i class="el-icon-edit"></i>
           <span slot="title">富文本</span>
           </el-menu-item>
