@@ -9,11 +9,14 @@
     name: 'loginbg',
     data () {
       return {
-
+         
       }
     },
     mounted () {
         new Particles().init();
+    },
+    destroyed(){
+
     }
   }
 </script>

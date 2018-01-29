@@ -30,7 +30,8 @@
 		this.numParticles = 75;
 		//required canvas variables
 		this.canvas = document.getElementById('canvas');
-		this.ctx = this.canvas.getContext('2d');
+        this.ctx = this.canvas.getContext('2d');
+        this.timer = "";
 	}
 
 	/**
@@ -136,7 +137,7 @@
 		var self = this,
 			ctx = self.ctx;
 
-		setInterval(function() {
+            this.timer = setInterval(function() {
 			//clears canvas
 			self.clearCanvas();
 			//then redraws particles in new positions based on velocity
@@ -183,7 +184,21 @@
 	 * @method clearCanvas
 	 */
 	Particles.prototype.clearCanvas = function() {
-		this.ctx.clearRect(0, 0, canvas.width, canvas.height);
+        var is_close = false;
+        try{
+            canvas;
+        }catch(e){
+            clearInterval(this.timer);
+            is_close = true;
+        }
+        
+        if(!is_close){
+            if(canvas){
+                this.ctx.clearRect(0, 0, canvas.width, canvas.height);
+            }
+        }
+        
+		
     }
     
 export default Particles;

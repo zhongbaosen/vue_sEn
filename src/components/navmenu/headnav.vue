@@ -8,9 +8,9 @@
     用户中心<i class="el-icon-arrow-down el-icon--right"></i>
   </span>
   <el-dropdown-menu slot="dropdown">
-    <el-dropdown-item command="/myinfo">我的资料</el-dropdown-item>
+    <el-dropdown-item command="/index/myinfo">我的资料</el-dropdown-item>
     <el-dropdown-item command="b" divided>我的设置</el-dropdown-item>
-    <el-dropdown-item command="e" divided>注销</el-dropdown-item>
+    <el-dropdown-item command="/" divided>注销</el-dropdown-item>
   </el-dropdown-menu>
 </el-dropdown>
       </div>
