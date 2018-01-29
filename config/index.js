@@ -26,10 +26,17 @@ module.exports = {
         }
       },
       "/get_state":{
-        target: 'http://121.201.67.222:19990/ajax.post?func=get_state',
+        target: 'http://47.52.228.251:8080/api/get_state.xhtml',
         changeOrigin: true,
         pathRewrite: {
           '^/get_state': ''
+        }
+      },
+      "/user/login":{
+        target: 'http://47.52.228.251:8080/api/Bg_login.xhtml',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/user/login': ''
         }
       }
     },

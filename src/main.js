@@ -4,6 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import Req from './utils/request'
+import Utils from './utils/utils' 
 import store from './vuex/store'
 import $ from 'jquery'
 import '../static/ueditor/ueditor.config.js'
@@ -14,6 +15,7 @@ import '../static/ueditor/ueditor.parse.min.js'
 Vue.config.productionTip = false;
 Vue.config.debug = true;
 Vue.prototype.$http = Req;
+Vue.prototype.$utils = Utils;
 var msg = "";
 
 router.beforeEach((to, from, next) => {
