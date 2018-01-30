@@ -95,6 +95,7 @@ export default {
       inputnum1: "input-2",
       inputtype1: "password",
       checked: false,
+      is_cookie: false,
       ruleForm: {
         userName: "", //用户名
         password: "" //密码
@@ -151,15 +152,14 @@ export default {
         });
         return;
       }
-      //判断复选框是否被勾选 勾选则调用配置cookie方法
-      if ((this.checked = true)) {
-        //传入账号名，密码，和保存天数3个参数
-        this.setCookie(name, pass, 7);
-      } else {
-        this.clearCookie();
+
+      if (this.is_cookie) {
+        pass = this.ruleForm.password;
+        data.密码 = pass;
       }
 
       var _this = this;
+      console.log(data);
       _this.myajax(data).then(
         res => {
           console.log(res);
@@ -169,6 +169,11 @@ export default {
               message: "获取信息:" + res.状态,
               type: "success"
             });
+            //判断复选框是否被勾选 勾选则调用配置cookie方法
+            if ((this.checked = true)) {
+              //传入账号名，密码，和保存天数3个参数
+              this.setCookie(name, pass, 7);
+            }
             this.linkTo("/index/page");
           } else {
             this.$message({
@@ -203,6 +208,7 @@ export default {
             this.ruleForm.userName = arr2[1]; //保存到保存数据的地方
           } else if (arr2[0] == "userPwd") {
             this.ruleForm.password = arr2[1];
+            this.is_cookie = true;
           }
         }
       }
@@ -210,6 +216,7 @@ export default {
     //清除cookie
     clearCookie: function() {
       this.setCookie("", "", -1); //修改2值都为空，天数为负1天就好了
+      this.is_cookie = false;
     },
     linkTo(url) {
       this.$router.push({ path: url });
@@ -223,6 +230,16 @@ export default {
     this.$nextTick(function() {
       this.getCookie();
     });
+  },
+  watch: {
+    ruleForm: {
+      handler(curVal, oldVal) {
+        if(curVal.password.length == 0){
+          this.is_cookie = false;
+        }
+      },
+      deep: true
+    }
   }
 };
 </script>
