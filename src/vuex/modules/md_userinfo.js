@@ -14,6 +14,9 @@ export default {
             },
             get UserRandom(){
                 return localStorage.getItem("User_random");
+            },
+            get UserName(){
+                return localStorage.getItem("User_name");
             }
         }
     },
@@ -25,6 +28,7 @@ export default {
             localStorage.setItem("User_headImg",data.头像);
             localStorage.setItem("User_sex",data.性别);
             localStorage.setItem("User_random",data.随机码);
+            localStorage.setItem("User_name",data.昵称);
         }
     },
     actions:{

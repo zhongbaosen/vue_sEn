@@ -12,7 +12,7 @@
             <img class="sex" src="../../assets/images/famale.png" alt="">
           </template>
           </div>
-          <span class="welcome">欢迎回来,{{Userinfo.userID}}!</span>
+          <span class="welcome">欢迎回来,{{Userinfo.nickname}}!</span>
           <el-dropdown class="dropdown" @command="handleCommand">
   <span class="el-dropdown-link">   
     用户中心<i class="el-icon-arrow-down el-icon--right"></i>
@@ -81,7 +81,8 @@ export default {
         headimg: this.$store.state.user.currentUser.UserHeadImg,
         sex: this.$store.state.user.currentUser.UserSex,
         userID: this.$store.state.user.currentUser.UseruserID,
-        random: this.$store.state.user.currentUser.UserRandom
+        random: this.$store.state.user.currentUser.UserRandom,
+        nickname:this.$store.state.user.currentUser.UserName
       }
     };
   },
