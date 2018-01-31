@@ -40,10 +40,10 @@ export default {
   },
   methods: {
     change(index) {
-      console.log(index);
+      //console.log(index);
     },
     clickbanner(index) {
-      console.log(index);
+      //console.log(index);
     }
   }
 };

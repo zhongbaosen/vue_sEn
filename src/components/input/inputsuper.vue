@@ -1,6 +1,6 @@
 <template>
 <span v-bind:class="inputstatic">
-					<input class="input__field input__field--yoko" v-bind:type="inputtype" v-bind:id="inputnum" v-model="inputval" />
+					<input class="input__field input__field--yoko" v-bind:type="inputtype" v-bind:id="inputnum" v-model="inputval" @keyup="Doup($event)"/>
 					<label v-bind:class="type" v-bind:for="inputnum">
 						<span class="input__label-content input__label-content--yoko">{{inputValue}}</span>
 					</label>
@@ -33,7 +33,8 @@
   background: #f0f0f0;
   color: #aaa;
   font-weight: bold;
-  font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB",
+    "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
   -webkit-appearance: none; /* for box shadows to show on iOS */
 }
 
@@ -1347,17 +1348,22 @@ export default {
       inputstatic: "input input--minoru"
     };
   },
+  methods: {
+    Doup(ev) {
+      this.$emit('Enter', ev);
+    }
+  },
   props: {
     type: String,
     inputValue: String,
     inputnum: String,
-    inputtype:String,
-    val:String
+    inputtype: String,
+    val: String
   },
   watch: {
     inputval(data) {
       console.log(data);
-      this.$emit('input', this.inputval);
+      this.$emit("input", this.inputval);
       var num = this.inputval.length;
       if (num > 0) {
         this.inputstatic = "input input--minoru input--filled";
@@ -1365,8 +1371,8 @@ export default {
         this.inputstatic = "input input--minoru";
       }
     },
-    val(data){
-       this.inputval = data;
+    val(data) {
+      this.inputval = data;
     }
   }
 };

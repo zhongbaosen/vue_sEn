@@ -54,19 +54,16 @@ export default {
       formLabelWidth: "120px"
     };
   },
-  computed: mapGetters({
-    msg: "GET_MSG"
-  }),
   methods:{
     openit(){
       this.dialogFormVisible = true;
-      this.form.id = this.$store.state.row.id;
-      this.form.paytype = this.$store.state.row.交易类别;
-      this.form.jifen = this.$store.state.row.积分;
-      this.form.payuser = this.$store.state.row.交易账户;
-      this.form.lessmoney = this.$store.state.row.余额;
-      this.form.time = this.$store.state.row.录入时间;
-      this.form.readme = this.$store.state.row.说明;
+      this.form.id = this.$store.state.editor.row.id;
+      this.form.paytype = this.$store.state.editor.row.交易类别;
+      this.form.jifen = this.$store.state.editor.row.积分;
+      this.form.payuser = this.$store.state.editor.row.交易账户;
+      this.form.lessmoney = this.$store.state.editor.row.余额;
+      this.form.time = this.$store.state.editor.row.录入时间;
+      this.form.readme = this.$store.state.editor.row.说明;
     }
   }
 };

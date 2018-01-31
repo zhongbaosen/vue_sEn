@@ -237,12 +237,12 @@ export default {
       _this.open();
     },
     handleEdit(index, row) {
-      this.$store.commit("SET_MSG", row, true);
+      this.$store.dispatch("SET_MSG", row, true);
       this.rowlist = row;
       this.$refs.handle.openit(); //调用子组件的函数
     },
     handleDelete(index, row) {
-      this.$store.commit("SET_MSG", row, true);
+      this.$store.dispatch("SET_MSG", row, true);
       this.rowlist = row;
     },
     toggleSelection(rows) {

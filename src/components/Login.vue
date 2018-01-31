@@ -12,7 +12,7 @@
   <el-col :span="12" :offset="1">
 <el-form :model="ruleForm" status-icon ref="ruleForm" label-width="100px" class="demo-ruleForm">
     <Inputsuper :type="inputype" :inputValue="inputval" :inputnum="inputnum" :inputtype="inputtype" v-model="ruleForm.userName" v-bind:val="ruleForm.userName"/>
-    <Inputsuper :type="inputype1" :inputValue="inputval1" :inputnum="inputnum1" :inputtype="inputtype1" v-model="ruleForm.password"  v-bind:val="ruleForm.password"/>
+    <Inputsuper :type="inputype1" :inputValue="inputval1" :inputnum="inputnum1" :inputtype="inputtype1" v-model="ruleForm.password"  v-bind:val="ruleForm.password" v-on:Enter="Enter"/>
     <div style="padding: 1rem 0 2rem 0;" class="clear">
    <span class="lf" style="color:#0489cc;">帮助</span>
    <div class="rt">
@@ -106,6 +106,12 @@ export default {
     };
   },
   methods: {
+    //监听组件的键盘事件
+    Enter(ev) {
+      if(ev.keyCode == 13){
+         this.submitForm();
+      }
+    },
     myajax(data) {
       //接口
       return new Promise((resolve, reject) => {
@@ -174,7 +180,8 @@ export default {
               //传入账号名，密码，和保存天数3个参数
               this.setCookie(name, pass, 7);
             }
-            this.linkTo("/index/page");
+            this.$store.dispatch("userLogin",res);
+            this.linkTo("Welcome","/index/page",res);
           } else {
             this.$message({
               showClose: true,
@@ -218,8 +225,8 @@ export default {
       this.setCookie("", "", -1); //修改2值都为空，天数为负1天就好了
       this.is_cookie = false;
     },
-    linkTo(url) {
-      this.$router.push({ path: url });
+    linkTo(rname,url,data) {
+      this.$router.push({name:rname, path: url,params:data});
     }
   },
   components: {
@@ -234,7 +241,7 @@ export default {
   watch: {
     ruleForm: {
       handler(curVal, oldVal) {
-        if(curVal.password.length == 0){
+        if (curVal.password.length == 0) {
           this.is_cookie = false;
         }
       },
