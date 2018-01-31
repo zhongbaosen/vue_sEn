@@ -4,7 +4,13 @@
       <div class="grid-content bg-purple-dark">
           <img src="../../assets/images/logo.png" alt="">
           <div class="headimg">
-          <img :src="Userinfo.headimg" alt="">
+          <img class="hdicon" :src="Userinfo.headimg" alt="">
+          <template v-if="Userinfo.sex == '男'">
+            <img class="sex" src="../../assets/images/male.png" alt="">
+          </template>
+          <template v-if="Userinfo.sex == '女'">
+            <img class="sex" src="../../assets/images/famale.png" alt="">
+          </template>
           </div>
           <span class="welcome">欢迎回来,{{Userinfo.userID}}!</span>
           <el-dropdown class="dropdown" @command="handleCommand">
@@ -49,9 +55,15 @@
   float: right;
   max-width: 51px;
 }
-.headimg img{
+.headimg .hdicon{
   border-radius: 2rem;
   border: 2px solid #ffffff;
+}
+.headimg .sex{
+  position:absolute;
+  max-width: 25px;
+  top: 3.0rem;
+  right: 0.01rem;
 }
 .welcome {
   position: absolute;
