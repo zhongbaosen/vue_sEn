@@ -71,6 +71,18 @@
   right: 15rem;
   color: #ffffff;
 }
+/*
+自定义修改样式
+*/
+li.el-submenu.is-active>.el-submenu__title span{
+  color: rgb(255, 208, 75);
+}
+li.el-submenu.is-opened{
+  border:1px solid;
+}
+li.el-submenu.is-active{
+  color: rgb(255, 208, 75);
+}
 </style>
 
 <script>

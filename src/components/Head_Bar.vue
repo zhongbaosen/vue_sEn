@@ -14,7 +14,8 @@
      <el-col :span="4">
        <el-button type="primary"  @click="returnContent" plain>显示编辑器内容</el-button>
      </el-col>
-     <el-col :span="6">
+     <el-col class="showbox" :span="6">
+       <div>展示区域</div>
          {{dat.content}}
      </el-col>
      </el-row>
@@ -83,5 +84,11 @@ label {
   float: left;
   width: 33%;
   margin: 0.2rem 0 0 0;
+}
+.showbox{
+  min-height: 40rem;
+  max-height: 20rem;
+  border: 2px solid #777777;
+  border-radius: 5px;
 }
 </style>
