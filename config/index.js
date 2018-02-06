@@ -38,6 +38,13 @@ module.exports = {
         pathRewrite: {
           '^/user/login': ''
         }
+      },
+      "/user/getinfo":{
+        target: 'http://47.52.228.251:8080/api/Bg_getinfo.xhtml',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/user/getinfo': ''
+        }
       }
     },
 

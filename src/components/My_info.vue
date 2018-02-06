@@ -12,17 +12,17 @@
     <el-form ref="form" :model="form" label-width="80px">
   <el-form-item label="头像">
     <div class="head_img">
-      <img src="http://www.sq86.cn/d/file/qqdaima/QQtouxiang/QQgexingtouxiang/2013-03-29/8da862d05d3e0b400660f01811768257.jpg" alt="" srcset="">
+      <img :src="form.headurl" alt="" srcset="">
     </div>
   </el-form-item>
   <el-form-item label="账号">
-    <el-input type="text" v-model="form.desc" :disabled="true"></el-input>
+    <el-input type="text" v-model="form.userid" :disabled="boxstatus.noshow"></el-input>
   </el-form-item>
   <el-form-item label="昵称">
-    <el-input type="text" v-model="form.desc" :disabled="true"></el-input>
+    <el-input type="text" v-model="form.nickname" :disabled="boxstatus.noshow"></el-input>
   </el-form-item>
   <el-form-item label="性别">
-    <el-radio-group v-model="form.resource">
+    <el-radio-group v-model="form.sex">
       <el-radio label="男"></el-radio>
       <el-radio label="女"></el-radio>
     </el-radio-group>
@@ -40,12 +40,12 @@
 </template>
 
 <style scoped>
-.head_img{
-   display: inline-block;
-  vertical-align:middle;
+.head_img {
+  display: inline-block;
+  vertical-align: middle;
 }
-.head_img img{
-   border-radius: 30px;
+.head_img img {
+  border-radius: 30px;
 }
 </style>
 
@@ -55,21 +55,48 @@ export default {
   data() {
     return {
       form: {
-        name: "",
-        region: "",
-        date1: "",
-        date2: "",
-        delivery: false,
-        type: [],
-        resource: "",
-        desc: ""
+        headurl:"http://img5.imgtn.bdimg.com/it/u=2064133027,3680347238&fm=27&gp=0.jpg",
+        userid: "",
+        nickname: "",
+        sex: ""
+      },
+      boxstatus:{
+        noshow:true
       }
     };
   },
   methods: {
     onSubmit() {
-      console.log("submit!");
+        this.boxstatus.noshow = false;
     }
+  },
+  mounted() {
+    let data = {};
+      data.账号 = this.$store.state.user.currentUser.UseruserID;
+      data.随机码 = this.$store.state.user.currentUser.UserRandom;
+      this.$utils.request("post", "/user/getinfo", data).then(
+        res => {
+          if (res.状态 == "成功") {
+            this.$message({
+              showClose: true,
+              message: "获取信息:" + res.状态,
+              type: "success"
+            });
+            this.form.headurl = res.头像;
+            this.form.userid = res.账号;
+            this.form.nickname = res.昵称;
+            this.form.sex = res.性别;
+            //console.log(JSON.stringify(_this.listres));
+          } else {
+            this.$message({
+              showClose: true,
+              message: "失败原因:" + res.状态,
+              type: "error"
+            });
+          }
+        },
+        res => {}
+      );
   }
 };
 </script>

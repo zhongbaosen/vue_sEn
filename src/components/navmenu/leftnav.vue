@@ -67,7 +67,7 @@
   </el-container>
 </template>
 
-<style>
+<style scoped>
 .leftnav-bg{
   background-color: rgb(84, 92, 100);
 }
@@ -86,6 +86,18 @@
 }
 .el-radio-button:first-child .el-radio-button__inner{
   border-left: 1px solid #409EFF;
+}
+/*
+自定义修改样式
+*/
+li.el-submenu.is-active>.el-submenu__title span{
+  color: rgb(255, 208, 75);
+}
+li.el-submenu.is-opened{
+  border:1px solid;
+}
+li.el-submenu.is-active{
+  color: rgb(255, 208, 75);
 }
 </style>
 

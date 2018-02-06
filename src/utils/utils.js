@@ -1,4 +1,5 @@
 var crypto = require('crypto');
+import Req from './request'
 var Utlis = {};
 
 //数字自增到某一值动画参数（目标元素,自定义配置） 
@@ -45,6 +46,32 @@ Utlis.md5 = function (data) {
     md5.update(data);
     var a = md5.digest('hex');
     return a;
+}
+
+/**
+ * 请求封装
+ * @param {*} 
+ */
+Utlis.request = function(type,_url,_data){
+    return new Promise((resolve, reject) => {
+    
+        Req({
+          method: type,
+          url: _url,
+          data: _data
+        }).then(
+          response => {
+            console.log("获取信息成功");
+            console.log(response);
+            resolve(response.data);
+          },
+          response => {
+            console.log("获取信息失败");
+            console.log(response);
+            reject(response.data);
+          }
+        );
+    });
 }
 
 export default Utlis;
