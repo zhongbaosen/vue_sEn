@@ -14,7 +14,8 @@
         <!-- 使用动态的 transition name -->
           <transition :name="transitionName">
         <keep-alive>
-        <el-main>       
+        <el-main>
+          <Mainnav/>       
           <router-view/> 
         </el-main> 
         </keep-alive>
@@ -45,6 +46,7 @@
 <script>
 import Content from "./Test_api";
 import Leftnav from "./navmenu/leftnav";
+import Mainnav from "./navmenu/mainnav";
 import Headnav from "./navmenu/headnav";
 import Footer from "./navmenu/footer";
 export default {
@@ -56,6 +58,7 @@ export default {
   components: {
     Content,
     Leftnav,
+    Mainnav,
     Headnav,
     Footer
   }, // watch $route 决定使用哪种过渡

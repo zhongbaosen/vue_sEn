@@ -20,6 +20,10 @@ var msg = "";
 
 router.beforeEach((to, from, next) => {
   console.log(to);
+  console.log(to.matched);
+  to.matched.some(record => {
+      console.log(record);
+  });
   if(!to.name){
     msg = "非法访问";
   }else{
