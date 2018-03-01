@@ -143,6 +143,7 @@ export default {
         console.log(data);
       },
       $route (to,from){
+        console.log("我");
         console.log(to,from);
         this.pathstatus = to.path;
         this.navselected = to.meta.index;

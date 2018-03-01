@@ -19,11 +19,20 @@ Vue.prototype.$utils = Utils;
 var msg = "";
 
 router.beforeEach((to, from, next) => {
-  console.log(to);
-  console.log(to.matched);
-  to.matched.some(record => {
-      console.log(record);
-  });
+  var arrlen = store.state.mainav.Navslist.length;
+  store.state.mainav.Navsnum = arrlen + 1;
+  
+  store.dispatch("setNavs",{
+    title: to.meta.title,
+    name: ''+store.state.mainav.Navsnum+'',
+    content: to.path
+  })
+  var Nowpath = to.path;
+
+  // console.log(to.matched);
+  // to.matched.some(record => {
+  //     console.log(record);
+  // });
   if(!to.name){
     msg = "非法访问";
   }else{
