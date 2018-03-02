@@ -82,7 +82,8 @@ export default {
       if (action === "remove") {
         //关闭标签时的效果
         let tabs = this.$store.state.mainav.Navslist;
-        let activeName = "" + tabs.length + "";
+        let activeName = this.$store.state.mainav.Navsnum;
+        console.log(tabs,activeName);
         if (activeName === targetName) {
           tabs.forEach((tab, index) => {
             if (tab.name === targetName) {
