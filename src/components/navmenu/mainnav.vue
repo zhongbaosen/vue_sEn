@@ -25,48 +25,64 @@
 export default {
   data() {
     return {
-      editableTabsValue: ''+this.$store.state.mainav.Navsnum+'',
+      editableTabsValue: "" + this.$store.state.mainav.Navsnum + "",
       editableTabs: this.$store.state.mainav.Navslist,
-      tabIndex: 0,
+      tabIndex: 0
     };
+  },
+  computed: {
+    listendata() {
+      return this.$store.state.mainav.Navsnum;
+    },
+    listenlist() {
+      return this.$store.state.mainav.Navslist;
+    }
+  },
+  watch:{
+    listendata:function(a,b){
+      this.editableTabsValue = a;
+      // console.log("修改前卫：" + a);  
+      // console.log("修改后为：" + b); 
+    },
+    listenlist:function(c,d){
+      this.editableTabs = c;
+    }
   },
   methods: {
     closeAllTab() {
-      console.log("我进来了")
-      this.$store.state.mainav.Navsnum = 0;
-      ++this.$store.state.mainav.Navsnum;
       this.$store.state.mainav.Navslist = [];
       this.$store.state.mainav.Navslist.push({
-          title: "首页",
-          name: "1",
-          content: "/index/page"
-        });
-      this.$store.state.mainav.Navsnum = "1";
-      this.$router.push({path: "/index/page"});
+        title: "首页",
+        name: "首页",
+        content: "/index/page"
+      });
+      this.$store.state.mainav.Navsnum = "首页";
+      this.$router.push({ path: "/index/page" });
     },
-    selectTab(data){
-      console.log(data);
-       var arr = this.editableTabs;
-       var num = Number(data.index);
-       var tourl = arr[num].content;
-       this.linkTo(tourl);
+    selectTab(data) {
+      console.log("你选了我:", data);
+      var arr = this.editableTabs;
+      var num = Number(data.index);
+      var tourl = arr[num].content;
+      this.linkTo(tourl);
     },
     linkTo(url) {
-      this.$router.push({path: url});
+      this.$router.push({ path: url });
     },
-    selectedNav(data){
-        console.log("当前选中的是"+data);
+    selectedNav(data) {
+      console.log("当前选中的是" + data);
     },
     handleTabsEdit(targetName, action) {
       if (action === "add") {
+        //当前没用到
         let newTabName = ++this.$store.state.mainav.Navsnum + "";
         this.editableTabs = this.$store.state.mainav.Navslist;
         this.editableTabsValue = newTabName;
       }
       if (action === "remove") {
-        let tabs = this.editableTabs;
-        let activeName = this.$store.state.mainav.Navsnum;
-        console.log(activeName,targetName);
+        //关闭标签时的效果
+        let tabs = this.$store.state.mainav.Navslist;
+        let activeName = "" + tabs.length + "";
         if (activeName === targetName) {
           tabs.forEach((tab, index) => {
             if (tab.name === targetName) {
@@ -79,7 +95,20 @@ export default {
         }
 
         this.editableTabsValue = activeName;
-        this.editableTabs = tabs.filter(tab => tab.name !== targetName);
+        let Nowtabs = tabs.filter(tab => tab.name !== targetName);
+        if (Nowtabs.length == 0) {
+          let index = {
+            title: "首页",
+            name: "首页",
+            content: "/index/page"
+          };
+          this.editableTabs.push(index);
+          this.editableTabsValue = index.name;
+          this.$router.push({ path: "/index/page" });
+          Nowtabs.push(index);
+        }
+        this.$store.state.mainav.Navslist = Nowtabs;
+        this.editableTabs = Nowtabs;
       }
     }
   }

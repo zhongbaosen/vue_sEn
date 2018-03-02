@@ -4,7 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import Req from './utils/request'
-import Utils from './utils/utils' 
+import Utils from './utils/utils'
 import store from './vuex/store'
 import $ from 'jquery'
 import '../static/ueditor/ueditor.config.js'
@@ -19,27 +19,26 @@ Vue.prototype.$utils = Utils;
 var msg = "";
 
 router.beforeEach((to, from, next) => {
-  var arrlen = store.state.mainav.Navslist.length;
-  store.state.mainav.Navsnum = arrlen + 1;
-  
-  store.dispatch("setNavs",{
+
+  store.dispatch("setNavs", {
     title: to.meta.title,
-    name: ''+store.state.mainav.Navsnum+'',
+    name: to.meta.title,
     content: to.path
   })
+  store.state.mainav.Navsnum = to.meta.title;
   var Nowpath = to.path;
 
   // console.log(to.matched);
   // to.matched.some(record => {
   //     console.log(record);
   // });
-  if(!to.name){
+  if (!to.name) {
     msg = "非法访问";
-  }else{
+  } else {
     msg = "管理平台" + "(" + to.meta.title + ") - Make by sEn";
   }
   //window.document.title = "管理平台" + "(" + to.meta.title + ") - Make by sEn";
-  
+
   window.document.title = msg;
   // setInterval(function(){
   //   titAn()
@@ -57,6 +56,6 @@ new Vue({
 })
 
 function titAn() {
-  msg = msg.substring(1,msg.length)+ msg.substring(0,1);
+  msg = msg.substring(1, msg.length) + msg.substring(0, 1);
   window.document.title = msg;
 }

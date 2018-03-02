@@ -4,7 +4,6 @@ export default {
     state:{
         Navslist:[],
         Navsnum:0,
-        Selectednum:0,
         mainstate:{
             get GetNavs(){
                 return localStorage.getItem("Navslist");
@@ -38,13 +37,10 @@ export default {
             for(var a in List){
                 if(List[a].content){
                     if(data.content == List[a].content){
-                        console.log(data);
-                        console.log(List[a]);
-                        state.Navsnum = ''+Number(List[a].name) - 1+'';
-                        state.Selectednum = List[a].name;
+                        //state.Navsnum = ''+Number(List[a].name) - 1+'';
+                        state.Navsnum = data.title;
                         return;
                     }
-                    console.log(List[a].content);
                 }
                 
             }

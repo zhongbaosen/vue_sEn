@@ -68,35 +68,35 @@
 </template>
 
 <style scoped>
-.leftnav-bg{
+.leftnav-bg {
   background-color: rgb(84, 92, 100);
 }
 .el-menu-vertical-demo {
 }
-.el-menu{
-  border:none;
+.el-menu {
+  border: none;
 }
 .el-menu-vertical-demo:not(.el-menu--collapse) {
   min-height: 2000px;
   max-height: auto;
   max-width: auto;
 }
-.el-radio-button__orig-radio:checked+.el-radio-button__inner{
-  background-color: #409EFF;
+.el-radio-button__orig-radio:checked + .el-radio-button__inner {
+  background-color: #409eff;
 }
-.el-radio-button:first-child .el-radio-button__inner{
-  border-left: 1px solid #409EFF;
+.el-radio-button:first-child .el-radio-button__inner {
+  border-left: 1px solid #409eff;
 }
 /*
 自定义修改样式
 */
-li.el-submenu.is-active>.el-submenu__title span{
+li.el-submenu.is-active > .el-submenu__title span {
   color: rgb(255, 208, 75);
 }
-li.el-submenu.is-opened{
-  border:1px solid;
+li.el-submenu.is-opened {
+  border: 1px solid;
 }
-li.el-submenu.is-active{
+li.el-submenu.is-active {
   color: rgb(255, 208, 75);
 }
 </style>
@@ -106,10 +106,10 @@ export default {
   data() {
     return {
       clientHeight: 0,
-      isCollapse:true,
-      navselected:"",
-      pathstatus:"",
-      navopen:[]
+      isCollapse: true,
+      navselected: "",
+      pathstatus: "",
+      navopen: []
     };
   },
   methods: {
@@ -126,34 +126,53 @@ export default {
       console.log(key, keyPath);
       this.navselected = key;
     },
-    linkTo(url,index) {
-      console.log("点击的序列为:"+this.navselected);
+    linkTo(url, index) {
+      console.log("点击的序列为:" + this.navselected);
       this.$router.push({ path: url });
     }
   },
-  watch:{
-      isCollapse: function(val) { //此处不要使用箭头函数
-           if(val){
-             this.navopen = [];
-           }else{
-             this.navopen = ["1","2","3","4"];
-           }
-      },
-      pathstatus:function(data){
-        console.log(data);
-      },
-      $route (to,from){
-        console.log("我");
-        console.log(to,from);
-        this.pathstatus = to.path;
-        this.navselected = to.meta.index;
+  watch: {
+    isCollapse: function(val) {
+      //此处不要使用箭头函数
+      if (val) {
+        this.navopen = [];
+      } else {
+        this.navopen = ["1", "2", "3", "4"];
       }
+    },
+    pathstatus: function(data) {
+      console.log(data);
+    },
+    $route(to, from) {
+      var arrlen = this.$store.state.mainav.Navslist.length;
+  console.log(arrlen);
+      let _list = this.$store.state.mainav.Navslist;
+      var _arr = new Array();
+      if (arrlen == 0) {
+        this.$store.state.mainav.Navsnum = "0";
+      } else {
+        for (var a in _list) {
+          if (!_list.hasOwnProperty(a)) {
+            continue;
+          }
+          console.log(_list[a]);
+          if (_list[a].content == to.path) {
+            console.log("dddd:",this.$store.state.mainav.Navslist[a].name);
+            this.$store.state.mainav.Navsnum = _list[a].title;
+          }
+
+          _arr.push(_list[a].name);
+        }
+      }
+
+      this.pathstatus = to.path;
+      this.navselected = to.meta.index;
+    }
   },
-  mounted(){
-     var _this = this;
-     console.log("当前的路径为:",this.$route);  //页面刷新后会自动加载此方法
-     this.navselected = this.$route.meta.index;
-     
+  mounted() {
+    var _this = this;
+    console.log("当前的路径为:", this.$route); //页面刷新后会自动加载此方法
+    this.navselected = this.$route.meta.index;
   }
 };
 </script>
