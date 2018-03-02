@@ -1,30 +1,16 @@
-# myproj
+# 项目介绍
 
-> A Vue.js project
+> 基于vue2.0搭建的管理平台demo
 
-## Build Setup
+## 安装及调试
 
 ``` bash
-# install dependencies
+# 安装依赖
 npm install
 
-# serve with hot reload at localhost:8080
+# 开发模式访问地址 localhost:8080
 npm run dev
 
-# build for production with minification
+# 打包webpack
 npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-
-# run unit tests
-npm run unit
-
-# run e2e tests
-npm run e2e
-
-# run all tests
-npm test
 ```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).

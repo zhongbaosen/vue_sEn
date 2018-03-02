@@ -9,7 +9,7 @@
     </el-col>
 </el-row>
     <el-row class="main" :gutter="20">
-  <el-col :span="12" :offset="1">
+  <el-col :span="10" :offset="1">
 <el-form :model="ruleForm" status-icon ref="ruleForm" label-width="100px" class="demo-ruleForm">
     <Inputsuper :type="inputype" :inputValue="inputval" :inputnum="inputnum" :inputtype="inputtype" v-model="ruleForm.userName" v-bind:val="ruleForm.userName"/>
     <Inputsuper :type="inputype1" :inputValue="inputval1" :inputnum="inputnum1" :inputtype="inputtype1" v-model="ruleForm.password"  v-bind:val="ruleForm.password" v-on:Enter="Enter"/>
@@ -46,6 +46,8 @@
 .main {
   width: 100%;
   top: 10rem;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
 }
 .clear {
   width: calc(100% - 2em);
