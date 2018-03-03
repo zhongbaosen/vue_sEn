@@ -83,6 +83,7 @@ export default {
         //关闭标签时的效果
         let tabs = this.$store.state.mainav.Navslist;
         let activeName = this.$store.state.mainav.Navsnum;
+        let activeUrl = "";
         console.log(tabs,activeName);
         if (activeName === targetName) {
           tabs.forEach((tab, index) => {
@@ -90,11 +91,13 @@ export default {
               let nextTab = tabs[index + 1] || tabs[index - 1];
               if (nextTab) {
                 activeName = nextTab.name;
+                activeUrl = nextTab.content;
               }
             }
           });
         }
-
+        console.log("当前关闭标签",targetName);
+        console.log("关闭标签后",activeName);
         this.editableTabsValue = activeName;
         let Nowtabs = tabs.filter(tab => tab.name !== targetName);
         if (Nowtabs.length == 0) {
@@ -108,8 +111,10 @@ export default {
           this.$router.push({ path: "/index/page" });
           Nowtabs.push(index);
         }
+        console.log(Nowtabs);
         this.$store.state.mainav.Navslist = Nowtabs;
         this.editableTabs = Nowtabs;
+        this.$router.push({ path: activeUrl });
       }
     }
   }
