@@ -31,6 +31,12 @@ export default {
             localStorage.setItem("User_name",data.昵称);
         }
     },
+    getters: {
+        lq: function (state) {
+            // console.log('123')
+            // return state
+        }
+    },
     actions:{
         userLogin(context,data){
             // 发送get请求做权限认证(真实开发建议用post的方式)

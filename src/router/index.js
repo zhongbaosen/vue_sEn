@@ -11,7 +11,10 @@ Vue.use(Router)
 Vue.use(ElementUI)
 Vue.use(vueEventCalendar, { locale: 'zh' }) //可以设置语言，支持中文和英文
 
+// 路由对象，
 export default new Router({
+  // 浏览器环境 使用url hash 也就是锚点来做路由#
   mode: 'hash',
+  // routes定义路由，规定路由的来源与操作（path/component）
   routes: Menu
 })

@@ -8,11 +8,14 @@ import Draw from '@/components/Draw'
 import Login from '@/components/Login'
 
 var menu = [
-    { path: "/", redirect: "/login" },  
+    // redirect 重定向到登录页
+    { path: "/", redirect: "/login" },
+    // 登录页面，组件在Login，
     {
       path: '/login',
       name: 'login',
       component: Login,
+      // 路由元信息，用来匹配值的，在导航守卫中可以检查这些原字段
       meta: {
         role: ['admin','super_editor'],
         title: '登录',
