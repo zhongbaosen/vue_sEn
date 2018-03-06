@@ -81,7 +81,9 @@ module.exports = {
     child_process: 'empty'
   },
   plugins: [
+    // 把公共模块拆成多个chunk common默认会所有入口节点的公共代码提取出来
     new webpack.optimize.CommonsChunkPlugin('common'),
+    // ProvidePlugin进行实例初始化后，jquery就会被自动加载并导入对应的node模块中
     new webpack.ProvidePlugin({
         jQuery: "jquery",
         $: "jquery"

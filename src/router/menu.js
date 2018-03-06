@@ -23,6 +23,7 @@ var menu = [
       }
     },
     {
+      // 嵌套路由可以不用加子路由的预格式，路由为'/index'，子路由为'path'，子路由不用加斜杠，会自动拼成/index/path
       path: '/index/:name',
       name: 'Index',
       component: _Index,
