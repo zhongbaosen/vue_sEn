@@ -14,7 +14,6 @@ import '../static/ueditor/ueditor.all.js'
 import '../static/ueditor/lang/zh-cn/zh-cn.js'
 import '../static/ueditor/ueditor.parse.min.js'
 
-// 直接设置不行吗 唉
 Vue.config.productionTip = false;
 Vue.config.debug = true;
 Vue.prototype.$http = Req;
