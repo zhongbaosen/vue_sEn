@@ -4,30 +4,30 @@
   <Loginbg />
   </div>
   <el-row class="main" :gutter="20">
-  <el-col :span="16" :offset="14">
-    <img class="logo" src="../assets/images/logo.png" alt="" srcset="">
+    <el-col :span="16" :offset="14">
+      <img class="logo" src="../assets/images/logo.png" alt="" srcset="">
     </el-col>
-</el-row>
-    <el-row class="main" :gutter="20">
-  <el-col :span="10" :offset="1">
-<el-form :model="ruleForm" status-icon ref="ruleForm" label-width="100px" class="demo-ruleForm">
-    <Inputsuper :type="inputype" :inputValue="inputval" :inputnum="inputnum" :inputtype="inputtype" v-model="ruleForm.userName" v-bind:val="ruleForm.userName"/>
-    <Inputsuper :type="inputype1" :inputValue="inputval1" :inputnum="inputnum1" :inputtype="inputtype1" v-model="ruleForm.password"  v-bind:val="ruleForm.password" v-on:Enter="Enter"/>
-    <div style="padding: 1rem 0 2rem 0;" class="clear">
-   <span class="lf" style="color:#0489cc;">帮助</span>
-   <div class="rt">
-     <el-checkbox v-model="checked" style="color:#a0a0a0;">一周内自动登录</el-checkbox>
-     <span @click="clearCookie" style="cursor: pointer;color: #f19149;font-size: 0.75rem;margin-left: 5px;">忘记密码？</span>
-   </div>
-  </div>
-    <el-form-item>
-    <el-col :span="20">
-    <el-button type="danger" @click="submitForm('ruleForm')">登录</el-button>
+  </el-row>
+  <el-row class="main" :gutter="20">
+    <el-col :span="10" :offset="1">
+      <el-form :model="ruleForm" status-icon ref="ruleForm" label-width="100px" class="demo-ruleForm">
+        <Inputsuper :type="inputype" :inputValue="inputval" :inputnum="inputnum" :inputtype="inputtype" v-model="ruleForm.userName" v-bind:val="ruleForm.userName"/>
+        <Inputsuper :type="inputype1" :inputValue="inputval1" :inputnum="inputnum1" :inputtype="inputtype1" v-model="ruleForm.password"  v-bind:val="ruleForm.password" v-on:Enter="Enter"/>
+        <div style="padding: 1rem 0 2rem 0;" class="clear">
+          <span class="lf" style="color:#0489cc;">帮助</span>
+          <div class="rt">
+            <el-checkbox v-model="checked" style="color:#a0a0a0;">一周内自动登录</el-checkbox>
+            <span @click="clearCookie" style="cursor: pointer;color: #f19149;font-size: 0.75rem;margin-left: 5px;">忘记密码？</span>
+          </div>
+        </div>
+        <el-form-item>
+          <el-col :span="20">
+            <el-button type="danger" @click="submitForm('ruleForm')">登录</el-button>
+          </el-col>
+        </el-form-item>
+      </el-form>
     </el-col>
-  </el-form-item>
-</el-form>
-  </el-col>
-</el-row>
+  </el-row>
 </el-container>
 </template>
 

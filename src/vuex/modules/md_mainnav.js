@@ -32,7 +32,7 @@ export default {
         Navs(state,data){
             /* 在这里把用户名和token保存起来 */
             /* mutation：转变 更改store中数据(state)的唯一方法，而且还可以通过dispatch去触发行为，行为在触发其才能更改，略为麻烦，也可以直接commit提交，但是要注意是同步的 */
-            console.log('lq：md_mainnav.js中触发变异的事件哦~')
+            console.log('tip：md_mainnav.js中触发变异的事件哦~')
             // console.log("缓存顶部栏标签页",data);
             console.log("state.Navslist",state.Navslist);
             var List = state.Navslist;
@@ -64,7 +64,7 @@ export default {
         */
         setNavs({ commit },data){
             /* 发送get请求做权限认证(真实开发建议用post的方式) */
-            console.log('lq：md_mainnav.js中行为的订阅哦~')
+            console.log('tip：md_mainnav.js中行为的订阅哦~')
             /* commit可以用来提交mutation */
             // commit("Navs", data)
             /*  第一个参数中的getters可以拿取仓库中的所有模块下的getters方法

@@ -1,4 +1,5 @@
 import Vue from 'vue'
+/* 要注册到dependencies中，不管是开发还是发布都要用 */
 import Vuex from 'vuex'
 import editModule from './modules/md_editor'
 import userModule from './modules/md_userinfo'

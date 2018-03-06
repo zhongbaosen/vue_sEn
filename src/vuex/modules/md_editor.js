@@ -9,7 +9,7 @@ export default {
     // 更改状态的唯一方法是提交，不能直接调用 这个是handler 管理器
     mutations: {
         "SET_MSG": function (state, row, opentoast) {
-            console.log('lq：md_editor.js中store的修改哦~')
+            console.log('tip：md_editor.js中store的修改哦~')
             console.log(state, row, opentoast)
             state.row = row;
             state.opentoast = true;
@@ -20,12 +20,12 @@ export default {
     getters: {
         "GET_MSG": function (state) {
             //console.log('获取数据', state)
-            console.log('lq：md_editor.js中store的计算属性哦~', state)
+            console.log('tip：md_editor.js中store的计算属性哦~', state)
             return state
         },
         "GET_LQ": function (state) {
             //console.log('获取数据', state)
-            console.log('lq：md_editor.js中store的计算属性哦~', state)
+            console.log('tip：md_editor.js中store的计算属性哦~', state)
             return state
         }
     },
@@ -33,7 +33,7 @@ export default {
     actions: {
         "SET_MSG": function (state, row, opentoast) {
             //console.log('获取', state)
-            console.log('lq：md_editor.js中行为的获取哦~')
+            console.log('tip：md_editor.js中行为的获取哦~')
             // 提交的是mutations中的对象哦 触发是store.dispatch('SET_MSG')
             store.commit("SET_MSG", row, opentoast)
         }
